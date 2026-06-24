@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The CEO | Orange Tail Virtual Airline</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0c2850;
+      --orange: #f47b20;
+      --white: #ffffff;
+      --light: #f4f6f8;
+      --dark: #07182f;
+      --grey: #d8dde6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(12, 40, 80, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    }
+
+    .navbar {
+      max-width: 1400px;
+      margin: auto;
+      height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .logo {
+      font-family: "Cinzel", serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    nav ul li {
+      position: relative;
+      padding: 30px 0;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% - 5px);
+      left: 0;
+      background: var(--white);
+      min-width: 220px;
+      display: none;
+      flex-direction: column;
+      border-radius: 0 0 6px 6px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .dropdown a {
+      color: var(--navy);
+      padding: 14px 18px;
+      font-size: 14px;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    nav ul li:hover .dropdown {
+      display: flex;
+    }
+
+    .ceo-hero {
+      min-height: 65vh;
+      background:
+        linear-gradient(to right, rgba(7,24,47,0.70), rgba(12,40,80,0.25)),
+        url("https://live.staticflickr.com/65535/55353444102_3f7e5cef21_h.jpg?s=eyJpIjo1NTM1MzQ0NDEwMiwiZSI6MTc4MjMwMTY5NSwicyI6IjlhMjY4ZTIyMzRiMGUzMmEwMTU3NTEwYTc4MzI5NTY1NDdjOTBlMTkiLCJ2IjoxfQ") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 140px 70px 60px;
+      color: var(--white);
+    }
+
+    .ceo-hero-content {
+      max-width: 850px;
+    }
+
+    .ceo-hero h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(42px, 6vw, 76px);
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+    }
+
+    .ceo-hero h2 {
+      color: var(--orange);
+      font-size: 24px;
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+
+    .ceo-hero p {
+      font-size: 21px;
+      line-height: 1.7;
+      max-width: 760px;
+      color: #e8edf5;
+    }
+
+    .ceo-section {
+      padding: 90px 70px;
+      background: var(--white);
+    }
+
+    .ceo-wrap {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .ceo-text h2 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 38px;
+      margin-bottom: 25px;
+    }
+
+    .ceo-text p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #35445a;
+      margin-bottom: 24px;
+    }
+
+    .ceo-card {
+      background: var(--light);
+      border-top: 6px solid var(--orange);
+      border-radius: 8px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .ceo-card h3 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .ceo-card ul {
+      list-style: none;
+    }
+
+    .ceo-card li {
+      padding: 12px 0;
+      border-bottom: 1px solid #d8dde6;
+      color: #35445a;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .message-section {
+      background: var(--navy);
+      color: var(--white);
+      padding: 90px 70px;
+    }
+
+    .message-wrap {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .message-wrap h2 {
+      font-family: "Cinzel", serif;
+      font-size: 38px;
+      margin-bottom: 28px;
+      color: var(--white);
+    }
+
+    .message-box {
+      background: rgba(255,255,255,0.08);
+      border-left: 6px solid var(--orange);
+      padding: 40px;
+      border-radius: 8px;
+    }
+
+    .message-box p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #e8edf5;
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      margin-top: 28px;
+      font-family: "Cinzel", serif;
+      color: var(--orange);
+      font-size: 24px;
+    }
+
+    footer {
+      background: #07182f;
+      color: var(--white);
+      text-align: center;
+      padding: 28px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0 24px;
+      }
+
+      nav ul {
+        gap: 16px;
+      }
+
+      .ceo-hero {
+        padding: 130px 30px 50px;
+      }
+
+      .ceo-section {
+        padding: 60px 30px;
+      }
+
+      .ceo-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .message-section {
+        padding: 60px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">ORANGE <span>TAIL</span></div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="#">About Us</a>
+          <div class="dropdown">
+            <a href="about.html">Who We Are</a>
+            <a href="the-ceo.html">The CEO</a>
+            <a href="board-of-directors.html">Board Of Directors</a>
+          </div>
+        </li>
+
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="join-us.html">Join Us</a></li>
+        <li><a href="pilot-center.html">Pilot Center</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="ceo-hero">
+  <div class="ceo-hero-content">
+    <h1>The CEO</h1>
+    <h2>Nicolai Jensen | Founder & Chief Executive Officer</h2>
+    <p>
+      Aviation has never been just a profession — it has been a lifelong passion,
+      shaped by dedication, experience, and a deep respect for the world of flight.
+    </p>
+  </div>
+</section>
+
+<section class="ceo-section">
+  <div class="ceo-wrap">
+    <div class="ceo-text">
+      <h2>Meet Nicolai Jensen</h2>
+
+      <p>
+        From an early age, aviation captured Nicolai Jensen's imagination. What began
+        as a childhood fascination with aircraft and flight developed into a lifelong
+        dedication to aviation, airline operations, and the culture that surrounds
+        professional flying.
+      </p>
+
+      <p>
+        With decades of aviation experience and a professional background as an airline
+        captain, Nicolai brings a strong understanding of flight operations, safety,
+        discipline, and the standards expected within a professional aviation
+        environment.
+      </p>
+
+      <p>
+        Having lived across different parts of the world, including Scandinavia and
+        South Africa, he brings an international perspective to Orange Tail Virtual
+        Airline — combining European structure with global ambition and a strong
+        passion for realistic virtual aviation.
+      </p>
+
+      <p>
+        Orange Tail Virtual Airline was created to be more than just another virtual
+        airline. It was built to represent quality, pride, professionalism, and a
+        serious love for aviation.
+      </p>
+    </div>
+
+    <div class="ceo-card">
+      <h3>Professional Highlights</h3>
+      <ul>
+        <li>Aviation enthusiast for over 35 years</li>
+        <li>Professional airline captain</li>
+        <li>Founder of Orange Tail Virtual Airline</li>
+        <li>Strong focus on realism and operational standards</li>
+        <li>Passionate about airline branding and fleet identity</li>
+        <li>International aviation perspective from Europe and South Africa</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="message-section">
+  <div class="message-wrap">
+    <h2>A Message From The CEO</h2>
+
+    <div class="message-box">
+      <p>
+        Welcome to Orange Tail Virtual Airline.
+      </p>
+
+      <p>
+        Whether you are a seasoned virtual pilot or just beginning your aviation
+        journey, our goal is to provide an environment where every flight feels
+        meaningful, professional, and rewarding.
+      </p>
+
+      <p>
+        I believe aviation is about more than aircraft and airports. It is about
+        connecting people, sharing experiences, respecting standards, and striving
+        for excellence in everything we do.
+      </p>
+
+      <p>
+        Thank you for choosing to be part of our journey. I look forward to welcoming
+        you aboard Orange Tail Virtual Airline.
+      </p>
+
+      <div class="signature">
+        Nicolai Jensen<br>
+        Founder & Chief Executive Officer
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Orange Tail Virtual Airline. All rights reserved.
+</footer>
+
+</body>
+</html>
