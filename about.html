@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who We Are | Orange Tail Virtual Airline</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0c2850;
+      --orange: #f47b20;
+      --white: #ffffff;
+      --light: #f4f6f8;
+      --dark: #07182f;
+      --grey: #d8dde6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(12, 40, 80, 0.96);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    }
+
+    .navbar {
+      max-width: 1400px;
+      margin: auto;
+      height: 86px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .logo {
+      font-family: "Cinzel", serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: var(--white);
+      min-width: 220px;
+      display: none;
+      flex-direction: column;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .dropdown a {
+      color: var(--navy);
+      padding: 14px 18px;
+      font-size: 14px;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    nav ul li:hover .dropdown {
+      display: flex;
+    }
+
+    .page-hero {
+      min-height: 55vh;
+      background:
+        linear-gradient(to right, rgba(12,40,80,0.50), rgba(12,40,80,0.25)),
+        url("https://live.staticflickr.com/65535/55353444102_3f7e5cef21_h.jpg?s=eyJpIjo1NTM1MzQ0NDEwMiwiZSI6MTc4MjMwMTY5NSwicyI6IjlhMjY4ZTIyMzRiMGUzMmEwMTU3NTEwYTc4MzI5NTY1NDdjOTBlMTkiLCJ2IjoxfQ") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 140px 70px 60px;
+      color: var(--white);
+    }
+
+    .page-hero-content {
+      max-width: 850px;
+    }
+
+    .page-hero h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(42px, 5vw, 70px);
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+    }
+
+    .page-hero p {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #e8edf5;
+      max-width: 760px;
+    }
+
+    .content-section {
+      padding: 90px 70px;
+      background: var(--white);
+    }
+
+    .content-wrap {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .content-wrap h2 {
+      font-family: "Cinzel", serif;
+      font-size: 38px;
+      color: var(--navy);
+      margin-bottom: 25px;
+    }
+
+    .content-wrap p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #35445a;
+      margin-bottom: 24px;
+    }
+
+    .highlight-box {
+      margin-top: 45px;
+      padding: 40px;
+      background: var(--light);
+      border-left: 6px solid var(--orange);
+      border-radius: 8px;
+    }
+
+    .highlight-box h3 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      padding: 70px;
+      background: var(--light);
+    }
+
+    .value-card {
+      background: var(--white);
+      padding: 36px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-top: 5px solid var(--orange);
+    }
+
+    .value-card h3 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 23px;
+      margin-bottom: 14px;
+    }
+
+    .value-card p {
+      line-height: 1.7;
+      color: #46566e;
+    }
+
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 28px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0 24px;
+      }
+
+      nav ul {
+        gap: 16px;
+      }
+
+      .page-hero {
+        padding: 130px 30px 50px;
+      }
+
+      .content-section {
+        padding: 60px 30px;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+        padding: 50px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">ORANGE <span>TAIL</span></div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="#">About Us</a>
+          <div class="dropdown">
+            <a href="who-we-are.html">Who We Are</a>
+            <a href="the-ceo.html">The CEO</a>
+            <a href="board-of-directors.html">Board Of Directors</a>
+          </div>
+        </li>
+
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="join-us.html">Join Us</a></li>
+        <li><a href="pilot-center.html">Pilot Center</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <h1>Who We Are</h1>
+    <p>
+      Orange Tail Virtual Airline is built for pilots who believe virtual aviation
+      should feel professional, realistic, stylish, and meaningful.
+    </p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-wrap">
+    <h2>About Orange Tail Virtual Airline</h2>
+
+    <p>
+      Orange Tail Virtual Airline was created with one clear purpose: to offer a
+      professional and immersive virtual airline experience for flight simulation
+      pilots who value realism, quality, and pride in every operation.
+    </p>
+
+    <p>
+      We are not just a name on a schedule. We are a virtual airline built around
+      strong branding, carefully planned routes, a respected fleet, and a clear
+      standard of professionalism. From short regional flights to long-haul
+      international operations, every Orange Tail flight is part of a larger
+      aviation experience.
+    </p>
+
+    <p>
+      Our airline combines the visual identity of a modern carrier with the
+      structure and discipline expected from serious flight simulation. We believe
+      that a virtual airline should look good, operate properly, and give its
+      pilots a reason to be proud of the aircraft they fly.
+    </p>
+
+    <div class="highlight-box">
+      <h3>Our Mission</h3>
+      <p>
+        To create a premium virtual airline environment where pilots can fly with
+        purpose, professionalism, and enjoyment — while representing a brand that
+        looks and feels like a real-world airline.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="value-card">
+    <h3>Professionalism</h3>
+    <p>
+      We aim to maintain high standards in our operations, presentation, pilot conduct,
+      and overall airline identity.
+    </p>
+  </div>
+
+  <div class="value-card">
+    <h3>Realism</h3>
+    <p>
+      Our routes, fleet choices, and operational structure are designed to give pilots
+      a believable and enjoyable airline experience.
+    </p>
+  </div>
+
+  <div class="value-card">
+    <h3>Pride</h3>
+    <p>
+      Orange Tail is built to be an airline pilots are proud to represent every time
+      they connect to the network and take to the skies.
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Orange Tail Virtual Airline. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orange Tail Virtual Airline</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0c2850;
+      --orange: #f47b20;
+      --white: #ffffff;
+      --light: #f4f6f8;
+      --dark: #07182f;
+      --grey: #d8dde6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(12, 40, 80, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    }
+
+    .navbar {
+      max-width: 1400px;
+      margin: auto;
+      height: 86px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .logo {
+      font-family: "Cinzel", serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    nav ul li {
+  position: relative;
+  padding: 30px 0;
+}
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .dropdown {
+  position: absolute;
+  top: calc(100% - 5px);
+  left: 0;
+  background: var(--white);
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+    .dropdown a {
+      color: var(--navy);
+      padding: 14px 18px;
+      font-size: 14px;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    nav ul li:hover .dropdown {
+      display: flex;
+    }
+
+    .hero {
+      height: 100vh;
+      background:
+        linear-gradient(to right, rgba(7,24,47,0.50), rgba(12,40,80,0.35)),
+        url("https://live.staticflickr.com/65535/55353444102_3f7e5cef21_h.jpg?s=eyJpIjo1NTM1MzQ0NDEwMiwiZSI6MTc4MjMwMTY5NSwicyI6IjlhMjY4ZTIyMzRiMGUzMmEwMTU3NTEwYTc4MzI5NTY1NDdjOTBlMTkiLCJ2IjoxfQ") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 120px 70px 40px;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      color: var(--white);
+    }
+
+    .hero-content h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+    }
+
+    .hero-content h1 span {
+      color: var(--orange);
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #e8edf5;
+      margin-bottom: 36px;
+      max-width: 620px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #d96510;
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .intro {
+      padding: 90px 60px;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .intro p {
+      max-width: 900px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #35445a;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      padding: 70px 60px;
+      background: var(--light);
+    }
+
+    .card {
+      background: var(--white);
+      padding: 38px;
+      border-top: 5px solid var(--orange);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    .card p {
+      line-height: 1.7;
+      color: #46566e;
+    }
+
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 28px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0 24px;
+      }
+
+      nav ul {
+        gap: 16px;
+      }
+
+      .hero {
+        padding: 120px 30px 40px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        padding: 50px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">ORANGE <span>TAIL</span></div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="#">About Us</a>
+          <div class="dropdown">
+            <a href="about.html">Who We Are</a>
+            <a href="the-ceo.html">The CEO</a>
+            <a href="board-of-directors.html">Board Of Directors</a>
+          </div>
+        </li>
+
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="join-us.html">Join Us</a></li>
+        <li><a href="pilot-center.html">Pilot Center</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to <span>Orange Tail</span></h1>
+    <p>
+      A premium virtual airline built on professionalism, style, operational realism,
+      and a passion for aviation excellence.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="join-us.html" class="btn btn-primary">Join The Airline</a>
+      <a href="fleet.html" class="btn btn-secondary">View Our Fleet</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>A Virtual Airline With Real Standards</h2>
+  <p>
+    Orange Tail Virtual Airline is designed for pilots who want more than just flying.
+    We focus on quality operations, beautiful aircraft, realistic routes, professional
+    presentation, and a community that respects aviation.
+  </p>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <h3>Professional Operations</h3>
+    <p>
+      Structured routes, realistic fleet planning, and a serious approach to virtual airline flying.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Premium Fleet</h3>
+    <p>
+      A carefully selected fleet designed for short-haul, medium-haul, and long-haul operations.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Pilot Community</h3>
+    <p>
+      A home for dedicated sim pilots who want to fly with purpose, quality, and pride.
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Orange Tail Virtual Airline. All rights reserved.
+</footer>
+
+</body>
+</html>
